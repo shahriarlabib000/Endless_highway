@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://m004tm0uhp6r"]
+
+[ext_resource type="PackedScene" uid="uid://cfhstq8uccyph" path="res://scenes/test_car.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://j8njnbsl5k1e" path="res://scenes/ground.tscn" id="1_tbgi4"]
+[ext_resource type="Script" uid="uid://b4xxri0qe0kri" path="res://scenes/follow_cam.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bv261g8qj1da0" path="res://scenes/mobile_control_ui.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://4igdu1sixah8" path="res://scenes/obsticle_spawner.gd" id="5_tbgi4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp6g"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_o5qli"]
+sky_material = SubResource("ProceduralSkyMaterial_sgp6g")
+
+[sub_resource type="Environment" id="Environment_0wfyh"]
+background_mode = 2
+sky = SubResource("Sky_o5qli")
+tonemap_mode = 2
+
+[node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0wfyh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ground" parent="." node_paths=PackedStringArray("pos") instance=ExtResource("1_tbgi4")]
+pos = NodePath("../ground2")
+
+[node name="ground2" parent="." node_paths=PackedStringArray("pos") instance=ExtResource("1_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+pos = NodePath("../ground")
+
+[node name="testCar" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142, 0)
+
+[node name="followCam" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.335708, -2.656416)
+script = ExtResource("2_0wfyh")
+target = NodePath("../testCar")
+offset = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="mobileControlUi" parent="CanvasLayer" instance=ExtResource("4_jyhfs")]
+
+[node name="obsticleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("car")]
+script = ExtResource("5_tbgi4")
+car = NodePath("../testCar")

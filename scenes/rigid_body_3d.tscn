@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://buia73k1by4ke"]
+
+[ext_resource type="Script" uid="uid://tvbvsemc7dq2" path="res://scenes/obsticle.gd" id="1_1m3bx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3hjb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1m3bx"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_1m3bx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_v3hjb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_1m3bx")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

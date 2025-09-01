@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://j8njnbsl5k1e"]
+
+[ext_resource type="Texture2D" uid="uid://bl7vc4bxuwrsx" path="res://icon.svg" id="1_pybca"]
+[ext_resource type="Script" uid="uid://bg035xblerplq" path="res://scenes/ground.gd" id="2_mi8v4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sgp6g"]
+size = Vector2(5, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5qli"]
+albedo_color = Color(0.3624434, 0.36244336, 0.36244336, 1)
+albedo_texture = ExtResource("1_pybca")
+uv1_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mi8v4"]
+data = PackedVector3Array(2.5, 0, 50, -2.5, 0, 50, 2.5, 0, -50, -2.5, 0, 50, -2.5, 0, -50, 2.5, 0, -50)
+
+[node name="ground" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_sgp6g")
+surface_material_override/0 = SubResource("StandardMaterial3D_o5qli")
+script = ExtResource("2_mi8v4")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mi8v4")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
