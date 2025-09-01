@@ -2,21 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5pqvm20h3qpn"
-path.s3tc="res://.godot/imported/free_zuk_3d_model_1.png-f86582e85cb9fa336d4c00e48b78b081.s3tc.ctex"
-path.etc2="res://.godot/imported/free_zuk_3d_model_1.png-f86582e85cb9fa336d4c00e48b78b081.etc2.ctex"
+uid="uid://bd1b45oj4tmx0"
+path.s3tc="res://.godot/imported/road.png-71aabb9a04c2ab3318c6689fb4a746ac.s3tc.ctex"
+path.etc2="res://.godot/imported/road.png-71aabb9a04c2ab3318c6689fb4a746ac.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "e15a6e5b9797a388f6f5e26c7d65c8cd"
-}
 
 [deps]
 
-source_file="res://models/car-1/free_zuk_3d_model_1.png"
-dest_files=["res://.godot/imported/free_zuk_3d_model_1.png-f86582e85cb9fa336d4c00e48b78b081.s3tc.ctex", "res://.godot/imported/free_zuk_3d_model_1.png-f86582e85cb9fa336d4c00e48b78b081.etc2.ctex"]
+source_file="res://img/road.png"
+dest_files=["res://.godot/imported/road.png-71aabb9a04c2ab3318c6689fb4a746ac.s3tc.ctex", "res://.godot/imported/road.png-71aabb9a04c2ab3318c6689fb4a746ac.etc2.ctex"]
 
 [params]
 

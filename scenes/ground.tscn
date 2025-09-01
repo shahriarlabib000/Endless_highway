@@ -1,14 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://j8njnbsl5k1e"]
 
-[ext_resource type="Texture2D" uid="uid://bl7vc4bxuwrsx" path="res://icon.svg" id="1_pybca"]
+[ext_resource type="Texture2D" uid="uid://bd1b45oj4tmx0" path="res://img/road.png" id="1_mi8v4"]
 [ext_resource type="Script" uid="uid://bg035xblerplq" path="res://scenes/ground.gd" id="2_mi8v4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sgp6g"]
 size = Vector2(5, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5qli"]
-albedo_color = Color(0.3624434, 0.36244336, 0.36244336, 1)
-albedo_texture = ExtResource("1_pybca")
+albedo_texture = ExtResource("1_mi8v4")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_offset = Vector3(2.92, 0, 0)
 uv1_triplanar = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mi8v4"]

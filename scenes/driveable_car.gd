@@ -1,4 +1,5 @@
-extends Node3D
+class_name DrivableCar
+extends StaticBody3D
 
 @export var speed:float = 50
 @export var turn_speed:float = 5
@@ -14,5 +15,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		if rotation.y != 0:
 			rotation.y = 0
-	if $ray.is_colliding():
-		printerr("Owari da")
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is ObsticleCar:
+		get_tree().call_deferred("reload_current_scene")

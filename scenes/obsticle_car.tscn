@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://buia73k1by4ke"]
+
+[ext_resource type="Script" uid="uid://tvbvsemc7dq2" path="res://scenes/obsticle.gd" id="1_erbbj"]
+[ext_resource type="PackedScene" uid="uid://dr8geummflaao" path="res://models/car-1/free_zuk_3d_model.glb" id="2_plkpl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3hjb"]
+size = Vector3(0.545, 0.65, 1.331)
+
+[node name="ObsticleCar" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_erbbj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19632506, 0.074216664)
+shape = SubResource("BoxShape3D_v3hjb")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_plkpl")]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
